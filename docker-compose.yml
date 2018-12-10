@@ -97,7 +97,11 @@ services:
       org.label-schema.group: "monitoring"
 
   pushgateway:
+<<<<<<< HEAD
     image: prom/pushgateway:v0.6.0
+=======
+    image: prom/pushgateway:v0.7.0
+>>>>>>> a2a182ec1a0fa92f34738f1146b3195f924d0cf3
     container_name: pushgateway
     restart: unless-stopped
     
