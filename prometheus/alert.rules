@@ -22,12 +22,12 @@ groups:
       description: "nvisible_packetbeat container is down for more than 30 seconds."
   
   - alert: Elastic_Cluster_Health_Green
-    expr:  elasticsearch_cluster_health_status{color="green"}==1
+    expr:  elasticsearch_cluster_health_status{color="red"}==1
     for: 30s
     labels: 
       severity: critical
     annotations:
-      summary:  "Instance {{ $labels.instance }}: not all primary and replica shards are allocated in elasticsearch cluster {{ $labels.cluster }}"
+      summary:  "ElasticSearch status is red from last 30 seconds. Instance {{ $labels.instance }}: not all primary and replica shards are allocated in elasticsearch cluster {{ $labels.cluster }}"
       description: "Instance {{ $labels.instance }}: not all primary and replica shards are allocated in elasticsearch cluster {{ $labels.cluster }}."
     
   - alert: Elastic_UP
@@ -41,7 +41,7 @@ groups:
 
   - alert: ElasticsearchHeapTooHigh
     expr: elasticsearch_jvm_memory_used_bytes{area="heap"} / elasticsearch_jvm_memory_max_bytes{area="heap"}
-      > 0.8
+      > 0.3
     for: 30s
     labels:
       severity: critical
