@@ -21,7 +21,7 @@ groups:
       summary: "nvisible_packetbeat"
       description: "nvisible_packetbeat container is down for more than 30 seconds."
   
-  - alert: Elastic_Cluster_Health_Green
+  - alert: Elastic_Cluster_Health_RED
     expr:  elasticsearch_cluster_health_status{color="red"}==1
     for: 30s
     labels: 
